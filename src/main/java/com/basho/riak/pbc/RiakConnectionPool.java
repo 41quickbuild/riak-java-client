@@ -434,7 +434,7 @@ public class RiakConnectionPool {
         if (inUse.remove(c)) {
             if (!c.isClosed()) {
                 c.beginIdle();
-                available.offerFirst(c);
+                available.offerLast(c);
             }
             permits.release();
         } else {
